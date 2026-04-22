@@ -14,8 +14,10 @@
 
     <script type="module">
       import { NavBar } from "./component/NavBar/script.js";
+      import { Movies } from "./component/Movies/script.js";
+      import { DataMovie } from "./data/dataMovie.js";
 
-      // Controleur
+      let movieData = DataMovie.requestMovies();
       // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
       // Une fois l'application terminée, on pourrait remettre let C.
       window.C = {};
@@ -28,6 +30,7 @@
 
       C.start = function () {
         V.renderNavBar("C.handlerAbout()");
+        V.renderMovie(movieData);
       };
 
       // Vue (contient tout ce qui est relatif à l'affichage)
@@ -43,6 +46,11 @@
       V.renderNavBar = function (hAbout) {
         let header = document.querySelector("#header");
         header.innerHTML = NavBar.format(hAbout);
+      };
+
+      V.renderMovie = function (data) {
+        let content = document.querySelector("#content");
+        content.innerHTML = Movie.format(data);
       };
 
       C.start(); // Démarre l'application
