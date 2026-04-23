@@ -32,3 +32,49 @@ function getAllMovies(){
     $res = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $res; // Retourne les résultats
 }
+
+
+/**
+ * Met à jour le menu pour un jour spécifique dans la base de données.
+ *
+ * @param string 
+ * @param string 
+ * @param string
+ * @param string 
+ * @param string 
+ * @param string 
+ * @param string 
+ * @param string 
+ * @param string 
+ * @return int Le nombre de lignes affectées par la requête de mise à jour.
+ * 
+ * A SAVOIR: une requête SQL de type update retourne le nombre de lignes affectées par la requête.
+ * Si la requête a réussi, le nombre de lignes affectées sera 1.
+ * Si la requête a échoué, le nombre de lignes affectées sera 0.
+ */
+
+
+function newMovie($name, $director, $year, $length, $desc, $cat, $image, $url, $age){
+    // Connexion à la base de données
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
+    // Requête SQL de mise à jour du menu avec des paramètres
+    $sql = "REPLACE INTO Movie (name, director, year, length, description, id_category, image, trailer, min_age) 
+            VALUES (:name, :director, :year, :length, :desc, :cat, :image, :url, :age)";
+    // Prépare la requête SQL
+    $stmt = $cnx->prepare($sql);
+    // Lie les paramètres aux valeurs
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':director', $director);
+    $stmt->bindParam(':year', $year);
+    $stmt->bindParam(':length', $length);
+    $stmt->bindParam(':desc', $desc);
+    $stmt->bindParam(':cat', $cat);
+    $stmt->bindParam(':image', $image);
+    $stmt->bindParam(':url', $url);
+    $stmt->bindParam(':age', $age);
+    // Exécute la requête SQL
+    $stmt->execute();
+    // Récupère le nombre de lignes affectées par la requête
+    $res = $stmt->rowCount(); 
+    return $res; // Retourne le nombre de lignes affectées
+}

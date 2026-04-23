@@ -25,3 +25,28 @@ function readMoviesController(){
     $movies = getAllMovies();
     return $movies;
 }
+
+function newMovieController(){
+  /* Lecture des données de formulaire
+    On ne vérifie pas si les données sont valides, on suppose (faudra pas toujours...) que le client les a déjà
+    vérifiées avant de les envoyer 
+  */
+  $name = $_REQUEST['title'];
+  $director = $_REQUEST['director'];
+  $year = $_REQUEST['year'];
+  $length = $_REQUEST['length'];
+  $desc = $_REQUEST['description'];
+  $cat = $_REQUEST['category'];
+  $image = $_REQUEST['image'];
+  $url = $_REQUEST['url'];
+  $age = $_REQUEST['min_age'];
+  // Mise à jour du menu à l'aide de la fonction updateMenu décrite dans model.php
+  $ok = newMovie($name, $director, $year, $length, $desc, $cat, $image, $url, $age);
+  // $ok est le nombre de ligne affecté par l'opération de mise à jour dans la BDD (voir model.php)
+  if ($ok!=0){
+    return "Le nouveau film est désormais disponible !";
+  }
+  else{
+    return false;
+  }
+}

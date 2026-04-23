@@ -1,0 +1,35 @@
+<div class="add-movie">
+    <h1 class="add-movie__title"># Ajouter un film</h1>
+    <form class="add-movie__form">
+        <input class="new-movie__input" type="text" name="title" placeholder="Titre du film" required>
+        <input class="new-movie__input" type="text" name="director" placeholder="Réalisateur du film" pattern="[^0-9]*" title="Les nombres ne sont pas autorisés." required>
+        <input class="new-movie__input" type="number" name="year" placeholder="Année de sortie" pattern="[^0-9]*" title="Les lettres ne sont pas autorisées." required>
+        <input class="new-movie__input" type="number" name="length" placeholder="Durée (en minutes)" pattern="[^0-9]*" title="Les lettres ne sont pas autorisées." required>
+        <input class="new-movie__input" type="text" name="description" placeholder="Synopsis du film" pattern="[^0-9]*" title="Les nombres ne sont pas autorisés." required>
+        <select name="categorie" required>
+            <option value="action">Action</option>
+            <option value="comedie">Comédie</option>
+            <option value="drame">Drame</option>
+            <option value="scifi">Science-fiction</option>
+            <option value="animation">Animation</option>
+            <option value="thriller">Thriller</option>
+            <option value="horreur">Horreur</option>
+            <option value="aventure">Aventure</option>
+            <option value="fantaisie">Fantaisie</option>
+            <option value="documentaire">Documentaire</option>
+        </select>
+        <input class="new-movie__input" type="text" name="image" placeholder="Nom du fichier du film" pattern="[^0-9]*" required>
+        <input class="new-movie__input" type="url" name="trailer" placeholder="URL youtube du trailer" pattern="[^0-9]*" required>
+        <select name="min_age" required>
+            <option value="0">Tous publics</option>
+            <option value="0">Avertissement</option>
+            <option value="12">Interdit au moins de 12 ans</option>
+            <option value="16">Interdit au moins de 16 ans</option>
+            <option value="18">Interdit au moins de 18 ans (non classé X)</option>
+            <option value="18">Interdit au moins de 18 ans (classé X)</option>
+        </select>
+        
+        <input class="new-movie__btn" onclick="{{handler}}" type="button" value="Update" name="todo">
+
+    </form>
+</div>
