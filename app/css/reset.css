@@ -1,11 +1,50 @@
 *,
-*::after,
-*::before {
+*::before,
+*::after {
+  /* ➩ Calcul des dimensions de la boite intégre la marge interne et la bordure*/
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+}
+
+body {
+  /* ➩ Définit une hauteur minimale pour le body taille 100% de la fenêtre : viewport height */
+  height: 100vh;
+}
+
+/* Reset liste */
 ul {
+  /* ➩ Supprime les marges internes et externes */
   padding: 0;
   margin: 0;
+  /* ➩ Supprime les puces des éléments de liste */
   list-style: none;
+}
+
+/* link */
+a,
+a:active,
+a:visited {
+  /* ➩ Pas de soulignement */
+  text-decoration: none;
+}
+
+/* Images responsives */
+img {
+  /* ➩ l'image responsive : occupe 100% max de la taille du parent  */
+  max-width: 100%;
+  /* ➩ l'image à un rendu Block  */
+  display: block;
 }
