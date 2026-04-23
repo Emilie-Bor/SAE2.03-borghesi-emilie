@@ -11,7 +11,14 @@ Movie.format = function (data, tab) {
   let html = template;
 //  html = html.replaceAll("{{cssClass}}", css);
 
-  let menuHTML = "";
+  if (data.lenght == 0){
+    return html.replace(
+      "{{movie}}",
+      "<p class='movie__unavalable'></p>"
+    )
+  }
+  else{
+    let menuHTML = "";
     for (let movie of data) {
         let li = templateLi;
         li = li.replaceAll("{{nameMovie}}", movie.name);
@@ -21,6 +28,7 @@ Movie.format = function (data, tab) {
     html = html.replaceAll("{{itemMovie}}", menuHTML);
 
     return html;
+  }
 };
 
 export { Movie };
