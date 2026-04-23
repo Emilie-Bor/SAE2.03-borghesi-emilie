@@ -10,14 +10,12 @@ Movie.format = function (data, tab) {
 
   let html = template;
 //  html = html.replaceAll("{{cssClass}}", css);
-//  html = html.replaceAll("{{nameMovie}}", data.name);
-//  html = html.replaceAll("{{imgMovie}}", "../server/images" + data.image);
 
   let menuHTML = "";
     for (let i of data.items) {
         let li = templateLi;
         li = li.replaceAll("{{nameMovie}}", data.name);
-        li = li.replaceAll("{{imgMovie}}", "../server/images" + data.image);
+        li = li.replaceAll("{{imgMovie}}", "../server/images/" + data.image);
         menuHTML += li;
     }
     html = html.replaceAll("{{itemMovie}}", menuHTML);
