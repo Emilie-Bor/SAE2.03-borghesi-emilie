@@ -1,3 +1,41 @@
 .movie-detail {
+    --_fg-clr: var(--color-gray-dark);
     display: flex;
+}
+
+.movie-detail__header {
+    
+}
+
+.movie-detail__close {
+    position: absolute;
+    top: 1.25rem;
+    right: 2.3rem;
+    color: var(--_fg-clr);
+    transition: transform 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+}
+
+.movie-detail__title {
+    
+}
+
+.movie-detail__img {
+    
+}
+
+.movie-detail_infos {
+    
+}
+
+.movie-detail__info {
+    
+}
+
+.movie-detail__info-title {
+    
+}
+
+.movie-detail__trailer {
+    
 }

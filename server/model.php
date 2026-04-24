@@ -23,7 +23,9 @@ function getAllMovies(){
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     // Requête SQL pour récupérer le menu avec des paramètres
-    $sql = "select id, name, image, year, length, description, director, trailer, min_age from Movie";
+    $sql = "SELECT Movie.*, Category.name as category_name 
+            FROM Movie 
+            LEFT JOIN Category ON Movie.id_category = Category.id";
     // Prépare la requête SQL
     $stmt = $cnx->prepare($sql);
     // Exécute la requête SQL
@@ -77,16 +79,4 @@ function newMovie($name, $director, $year, $length, $desc, $cat, $image, $url, $
     // Récupère le nombre de lignes affectées par la requête
     $res = $stmt->rowCount(); 
     return $res; // Retourne le nombre de lignes affectées
-}
-
-function getMovieDetail($id){
-    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-    $sql = "SELECT Movie.*, Category.name as category_name 
-            FROM Movie 
-            LEFT JOIN Category ON Movie.id_category = Category.id";
-    $stmt = $cnx->prepare($sql);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-    $res = $stmt->fetch(PDO::FETCH_OBJ);
-    return $res;
 }

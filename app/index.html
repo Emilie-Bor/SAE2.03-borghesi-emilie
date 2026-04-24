@@ -40,7 +40,7 @@
 
       C.handlerMovieDetail = function (index) {
         let movie = window.movies[index];
-        V.renderMovieDetails(movie);
+        V.renderMovieDetail(movie);
       };
 
       C.handlerCloseMovieDetail = function (id) {
@@ -74,7 +74,7 @@
 
       V.renderMovieDetail = function (movie) {
         let content = document.querySelector("#content");
-        content.innerHTML = MovieDetails.format(movie);
+        content.innerHTML = MovieDetail.format(movie);
       };
 
       C.start(); // Démarre l'application
