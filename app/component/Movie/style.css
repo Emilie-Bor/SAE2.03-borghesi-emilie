@@ -15,7 +15,6 @@
 .movie__unavailable {
   font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: 0.9rem;
   color: var(--_ff-clr);
 }
 

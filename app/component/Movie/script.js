@@ -6,15 +6,13 @@ let templateLi = await templateLiFile.text();
 
 let Movie = {};
 
-let test = [];
-
 Movie.format = function (data, tab) {
 
   let html = template;
 //  html = html.replaceAll("{{cssClass}}", css);
 
   if (data.length == 0){
-    return html.replaceAll("{{movie}}", "<p class='movie__unavailable'>Nous n'avons aucun film de disponible aujourd'hui, repassez demain.</p>");
+    return html.replaceAll("{{itemMovie}}", "<li class='movie__unavailable'>Nous n'avons aucun film de disponible aujourd'hui, repassez demain.</li>");
   }
   else{
     let menuHTML = "";

@@ -14,6 +14,7 @@ DataMovie.update = async function (fdata) {
     };
     let answer = await fetch(HOST_URL + "/server/script.php?todo=newmovie", config);
     let text = await answer.text();
+    
     let data = await answer.json();
     return data;
 }
