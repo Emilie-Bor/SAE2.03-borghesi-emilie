@@ -15,8 +15,14 @@
  *  Et dans une véritable application il peut y avoir énormément de paramètres, ce qui deviendrait compliqué et illisible.
  * 
  */
-ini_set('display_errors', 1);
+
+// Activer le rapport d'erreurs PHP
 error_reporting(E_ALL);
+
+// Forcer l'affichage des erreurs à l'écran
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+
 /**
  * Inclusion du fichier controller.php.
  * 

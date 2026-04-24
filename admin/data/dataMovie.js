@@ -1,6 +1,6 @@
 
 // URL où se trouve le répertoire "server" sur mmi.unilim.fr
-let HOST_URL = "http://mmi.unilim.fr/~borghesi1/SAE2.03-borghesi-emilie";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
+let HOST_URL = "..";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
 
 let DataMovie = {};
 
@@ -13,8 +13,7 @@ DataMovie.update = async function (fdata) {
         body: fdata // données à envoyer sous forme d'objet FormData
     };
     let answer = await fetch(HOST_URL + "/server/script.php?todo=newmovie", config);
-    let text = await answer.text();
-    
+
     let data = await answer.json();
     return data;
 }

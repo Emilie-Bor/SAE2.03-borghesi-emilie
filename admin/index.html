@@ -21,10 +21,17 @@
       window.C = {};
 
       C.handlerUpdate = async function(){
-            
-            
+
             let form = document.querySelector('.new-movie__form');
+
+            if (!form.checkValidity()) {
+                V.renderLog("Erreur : Veuillez remplir correctement tous les champs.");
+                form.reportValidity();
+                return;
+            }
+
             let fd = new FormData(form);
+            V.renderLog("Ajout du film en cours...");
             // Attend la réponse de la fonction `DataMenu.update(fd)`
             let res = await DataMovie.update(fd);
             V.renderLog(res);
@@ -32,7 +39,7 @@
 
       C.start = function () {
         V.renderLog("Démarrage de l'application");
-        V.renderMovie(movies);
+        V.renderMovie("C.handlerUpdate()");
       };
 
       window.V = {};
@@ -42,9 +49,9 @@
         content.innerHTML = Log.format(txt);
       };
 
-      V.renderMovie = function(data){
+      V.renderMovie = function(handler){
             let content = document.querySelector('#newMovie');
-            content.innerHTML = NewMovieForm.format(data);
+            content.innerHTML = NewMovieForm.format(handler);
       }
 
       C.start();
