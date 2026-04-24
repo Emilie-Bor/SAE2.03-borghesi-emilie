@@ -1,0 +1,44 @@
+<section class="movie-detail">
+  <div class="movie-detail__header">
+    <img class="movie-detail__img" src="{{imgMovie}}" alt="{{nameMovie}}" />
+    <div class="movie-detail__infos">
+      <h1 class="movie-detail__info-title">{{nameMovie}} – {{yearMovie}}</h1>
+      <p class="movie-detail__info">
+        <span class="movie-detail__info-title">Description</span>
+        {{descMovie}}
+      </p>
+      <p class="movie-detail__info">
+        <span class="movie-detail__info-title">Réalisateur</span>
+        {{directorMovie}}
+      </p>
+      <p class="movie-detail__info">
+        <span class="movie-detail__info-title">Année de sortie</span>
+        {{yearMovie}}
+      </p>
+      <p class="movie-detail__info">
+        <span class="movie-detail__info-title">Catégorie</span>
+        {{categoryMovie}}
+      </p>
+      <p class="movie-detail__info">
+        <span class="movie-detail__info-title">Âge minimum</span>
+        {{ageMovie}}
+      </p>
+    </div>
+  </div>
+  <iframe
+    class="movie-detail__trailer"
+    src="{{trailerMovie}}"
+    title="URL link"
+    frameborder="0"
+    allow=
+      "accelerometer;
+      utoplay;
+      clipboard-write;
+      encrypted-media;
+      gyroscope;
+      picture-in-picture;
+      web-share;"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+    Bande Annonce</iframe>
+</section>

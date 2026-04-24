@@ -78,3 +78,13 @@ function newMovie($name, $director, $year, $length, $desc, $cat, $image, $url, $
     $res = $stmt->rowCount(); 
     return $res; // Retourne le nombre de lignes affectées
 }
+
+function getMovieDetail($id){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "select Category.name as label, Movie.* from Movie INNER JOIN Category ON Category.id = Movie.id_category WHERE Movie.id = :id";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    $res = $stmt->fetch(PDO::FETCH_OBJ);
+    return $res;
+}

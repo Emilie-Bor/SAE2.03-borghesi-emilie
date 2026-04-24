@@ -16,9 +16,10 @@
       import { NavBar } from "./component/NavBar/script.js";
       import { Movie } from "./component/Movie/script.js";
       import { DataMovie } from "./data/dataMovie.js";
+      import { MovieDetail } from "./component/MovieDetail/script.js";
 
       let movies = await DataMovie.requestMovies();
-      let test = []; // tableau vide pour tester le message d'erreur
+      let erreur = []; // tableau vide pour tester le message d'erreur
 
       // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
       // Une fois l'application terminée, on pourrait remettre let C.
@@ -28,6 +29,17 @@
         alert(
           "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !"
         );
+      };
+
+      C.handlerMovieDetail = async function (id) {
+        let movieDetail = await DataMovie.requestMovieDetail(id);
+        if (movieDetail) {
+          V.renderMovieDetail(movieDetail);
+        }
+      };
+
+      C.handlerCloseMovieDetail = function (id) {
+        V.renderMovie(movies, "C.handlerMovieDetail");
       };
 
       C.start = function () {
@@ -53,6 +65,11 @@
       V.renderMovie = function (data) {
         let content = document.querySelector("#content");
         content.innerHTML = Movie.format(data);
+      };
+
+      V.renderMovieDetail = function (data) {
+        let content = document.querySelector("#content");
+        content.innerHTML = MovieDetail.format(data);
       };
 
       C.start(); // Démarre l'application
