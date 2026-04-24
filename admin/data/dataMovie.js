@@ -12,7 +12,8 @@ DataMovie.update = async function (fdata) {
         method: "POST", // méthode HTTP à utiliser
         body: fdata // données à envoyer sous forme d'objet FormData
     };
-    let answer = await fetch(HOST_URL + "/server/script.php?todo=update", config);
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=newmovie", config);
+    let text = await answer.text();
     let data = await answer.json();
     return data;
 }

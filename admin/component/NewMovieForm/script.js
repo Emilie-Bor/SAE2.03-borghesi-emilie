@@ -11,4 +11,4 @@ NewMovieForm.format = function(handler){
 }
 
 
-export {NewMovieForm};
+export { NewMovieForm };

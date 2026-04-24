@@ -1,12 +1,12 @@
-<div class="add-movie">
-    <h1 class="add-movie__title"># Ajouter un film</h1>
-    <form class="add-movie__form">
+<div class="new-movie">
+    <h1 class="new-movie__title"># Ajouter un film</h1>
+    <form class="new-movie__form">
         <input class="new-movie__input" type="text" name="title" placeholder="Titre du film" required>
         <input class="new-movie__input" type="text" name="director" placeholder="Réalisateur du film" pattern="[^0-9]*" title="Les nombres ne sont pas autorisés." required>
         <input class="new-movie__input" type="number" name="year" placeholder="Année de sortie" pattern="[^0-9]*" title="Les lettres ne sont pas autorisées." required>
         <input class="new-movie__input" type="number" name="length" placeholder="Durée (en minutes)" pattern="[^0-9]*" title="Les lettres ne sont pas autorisées." required>
         <input class="new-movie__input" type="text" name="description" placeholder="Synopsis du film" pattern="[^0-9]*" title="Les nombres ne sont pas autorisés." required>
-        <select name="categorie" required>
+        <select name="category" required>
             <option value="action">Action</option>
             <option value="comedie">Comédie</option>
             <option value="drame">Drame</option>
@@ -19,7 +19,7 @@
             <option value="documentaire">Documentaire</option>
         </select>
         <input class="new-movie__input" type="text" name="image" placeholder="Nom du fichier du film" pattern="[^0-9]*" required>
-        <input class="new-movie__input" type="url" name="trailer" placeholder="URL youtube du trailer" pattern="[^0-9]*" required>
+        <input class="new-movie__input" type="url" name="urk" placeholder="URL youtube du trailer" pattern="[^0-9]*" required>
         <select name="min_age" required>
             <option value="0">Tous publics</option>
             <option value="0">Avertissement</option>
