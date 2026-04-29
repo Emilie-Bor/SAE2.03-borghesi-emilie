@@ -57,16 +57,14 @@
         return acc;
       }, {});
 
-
       const organizedData = Object.values(grouped);
-
 
       V.renderMovieByCategory(organizedData);
     };
 
     C.start = function () {
       V.renderNavBar("C.handlerAbout()", "C.handlerHome()");
-      V.renderMovie(movies);
+      C.handlerMovieCategory();
     };
 
     // Vue (contient tout ce qui est relatif à l'affichage)

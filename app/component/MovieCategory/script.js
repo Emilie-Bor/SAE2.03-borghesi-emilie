@@ -8,7 +8,7 @@ import { Movie } from "../Movie/script.js";
 
 let MovieCategory = {};
 
-MovieCategory.format = function (data, tab) {
+MovieCategory.format = function (data) {
   let html = template;
   //  html = html.replaceAll("{{cssClass}}", css);
 
@@ -20,7 +20,7 @@ MovieCategory.format = function (data, tab) {
 
     li = li.replaceAll("{{categoryName}}", category.name);
 
-    let moviesHTML = Movie.format(category.name); 
+    let moviesHTML = Movie.format(category.movies); 
     li = li.replaceAll("{{movies}}", moviesHTML);
 
     menuHTML += li;

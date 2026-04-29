@@ -1,0 +1,63 @@
+.movie-category {
+  --_bg-clr: var(--color-fg);
+  --_ff-clr: var(--color-black);
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+  margin: 1.5rem 1rem;
+  font-family: var(--ff-sans);
+  background: var(--_bg-clr);
+
+  .movie-category__all {
+    .movie-category__cat {
+      .movie-category__title {
+        font-size: 3rem;
+        font-weight: 700;
+      }
+
+      .movie-category__list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .movie-category__movies {
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 24rem) {
+  .movie-category {
+    --_bg-clr: var(--color-fg);
+    --_ff-clr: var(--color-black);
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vw;
+    min-height: 90vh;
+    margin: 3rem 1.2rem;
+    font-family: var(--ff-sans);
+    background: var(--_bg-clr);
+
+    .movie-category__all {
+      .movie-category__cat {
+        .movie-category__title {
+          font-size: 2rem;
+          font-weight: 700;
+        }
+
+        .movie-category__list {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          .movie-category__movies {
+          }
+        }
+      }
+    }
+  }
+}

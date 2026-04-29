@@ -1,62 +1,55 @@
 .movie-detail {
-    --_fg-clr: var(--color-gray-dark);
-    --_bg-clr: var(--color-gray-light);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: top;
-    min-width: 100vw;
-    min-height: 100vh;
-    padding: 2rem;
-    font-family: var(--ff-sans);
-    background: var(--_bg-clr);
-}
-
-.movie-detail__header {
-}
-
-.movie-detail__close {
-    position: absolute;
-    width: 40rem;
-    top: 1.25rem;
-    right: 2.3rem;
-    color: var(--_fg-clr);
-    cursor: pointer;
-}
-
-.movie-detail__title {
+  --_fg-clr: var(--color-gray-dark);
+  --_bg-clr: var(--color-gray-light);
   display: flex;
-  justify-content: center;
-  font-size: 4rem;
-  font-weight: 700;
-}
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: top;
+  min-width: 100vw;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: var(--ff-sans);
+  background: var(--_bg-clr);
 
-.movie-detail__img {
-  position: relative;
-  width: 28rem;
-  height: 35rem;
-  margin: 2rem 3rem 1.5rem;
-  border-radius: .4rem;
-  cursor: pointer;
-}
+  .movie-detail__header {
+    .movie-detail__close {
+      position: absolute;
+      width: 40rem;
+      top: 1.25rem;
+      right: 2.3rem;
+      color: var(--_fg-clr);
+      cursor: pointer;
+    }
 
-.movie-detail_infos {
-    
-}
+    .movie-detail__title {
+      display: flex;
+      justify-content: center;
+      font-size: 4rem;
+      font-weight: 700;
+    }
 
-.movie-detail__info {
-    
-}
+    .movie-detail__img {
+      position: relative;
+      width: 28rem;
+      height: 35rem;
+      margin: 2rem 3rem 1.5rem;
+      border-radius: 0.4rem;
+      cursor: pointer;
+    }
 
-.movie-detail__info-title {
-    
-}
+    .movie-detail_infos {
+      .movie-detail__info {
+        .movie-detail__info-title {
+        }
+      }
+    }
+  }
 
-.movie-detail__trailer {
-  position: relative;
-  width: 40rem;
-  aspect-ratio: 16/9;
-  margin: 2rem 3rem 1.5rem;
-  border-radius: .4rem;
-    
+  .movie-detail__trailer {
+    position: relative;
+    width: 40rem;
+    aspect-ratio: 16/9;
+    margin: 2rem 3rem 1.5rem;
+    border-radius: 0.4rem;
+  }
 }
