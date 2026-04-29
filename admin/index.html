@@ -24,7 +24,7 @@
 
             let form = document.querySelector('.new-movie__form');
 
-            if (!form.checkValidity()) {
+            if (!form.reportValidity()) {
                 V.renderLog("Erreur : Veuillez remplir correctement tous les champs.");
                 form.reportValidity();
                 return;

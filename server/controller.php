@@ -58,3 +58,8 @@ if(isset($_REQUEST['id'])){
     }
     return false;
 }
+
+function readMovieCategoryController(){
+  $categories = getAllCategories();
+  return $categories;
+}

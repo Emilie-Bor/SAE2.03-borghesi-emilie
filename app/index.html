@@ -16,6 +16,7 @@
       import { NavBar } from "./component/NavBar/script.js";
       import { Movie } from "./component/Movie/script.js";
       import { MovieDetail } from "./component/MovieDetail/script.js";
+      import { MovieCategory } from "./component/MovieCategory/script.js";
 
       import { DataMovie } from "./data/dataMovie.js";
       
@@ -45,6 +46,10 @@
 
       C.handlerCloseMovieDetail = function (id) {
         V.renderMovie(movies, "C.handlerMovieDetail");
+      };
+
+      C.handlerMovieCategory = function () {
+        V.renderMovie(movies, "C.handlerMovieCategory");
       };
 
       C.start = function () {
