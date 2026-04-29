@@ -24,11 +24,8 @@ MovieCategory.format = function (data, tab) {
     li = li.replaceAll("{{movies}}", moviesHTML);
 
     menuHTML += li;
-
-    html = html.replaceAll("{{movieCategories}}", menuHTML);
-
-    return html;
   }
+  return html.replaceAll("{{movieCategories}}", menuHTML);
 };
 
 export { MovieCategory };

@@ -1,105 +1,107 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <title>SAE2.03 APP</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/base.css" />
-  </head>
 
-  <body>
-    <header id="header"></header>
+<head>
+  <title>SAE2.03 APP</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/base.css" />
+</head>
 
-    <section id="content"></section>
+<body>
+  <header id="header"></header>
 
-    <script type="module">
-      import { NavBar } from "./component/NavBar/script.js";
-      import { Movie } from "./component/Movie/script.js";
-      import { MovieDetail } from "./component/MovieDetail/script.js";
-      import { MovieCategory } from "./component/MovieCategory/script.js";
+  <section id="content"></section>
 
-      import { DataMovie } from "./data/dataMovie.js";
+  <script type="module">
+    import { NavBar } from "./component/NavBar/script.js";
+    import { Movie } from "./component/Movie/script.js";
+    import { MovieDetail } from "./component/MovieDetail/script.js";
+    import { MovieCategory } from "./component/MovieCategory/script.js";
 
-      let movies = await DataMovie.requestMovies();
-      let erreur = []; // tableau vide pour tester le message d'erreur
+    import { DataMovie } from "./data/dataMovie.js";
 
-      window.movies = await DataMovie.requestMovies();
-      // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
-      // Une fois l'application terminée, on pourrait remettre let C.
-      window.C = {};
+    let movies = await DataMovie.requestMovies();
+    let erreur = []; // tableau vide pour tester le message d'erreur
 
-      C.handlerAbout = function () {
-        alert(
-          "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !",
-        );
-      };
+    window.movies = await DataMovie.requestMovies();
+    // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
+    // Une fois l'application terminée, on pourrait remettre let C.
+    window.C = {};
 
-      C.handlerHome = function () {
-        V.renderMovie(window.movies);
-      };
+    C.handlerAbout = function () {
+      alert(
+        "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !",
+      );
+    };
 
-      C.handlerMovieDetail = function (index) {
-        let movie = window.movies[index];
-        V.renderMovieDetail(movie);
-      };
+    C.handlerHome = function () {
+      V.renderMovie(window.movies);
+    };
 
-      C.handlerCloseMovieDetail = function (id) {
-        V.renderMovie(movies, "C.handlerMovieDetail");
-      };
+    C.handlerMovieDetail = function (index) {
+      let movie = window.movies[index];
+      V.renderMovieDetail(movie);
+    };
 
-      C.MoviesByCategory = function (movies) {
-        const categories = movies.reduce((acc, movie) => {
-          const cat = movie.category_name || "Autres";
-          if (!acc[cat]) acc[cat] = { name: cat, movies: [] };
-          acc[cat].movies.push(movie);
-          return acc;
-        }, {});
+    C.handlerCloseMovieDetail = function (id) {
+      V.renderMovie(movies, "C.handlerMovieDetail");
+    };
 
-        return Object.values(categories);
-      };
+    C.handlerMovieCategory = function () {
 
-      C.handlerMovieCategory = function () {
-        const allCategories = C.MoviesByCategory(window.movies);
-        V.renderMovieCategory(allCategories);
-      };
+      const grouped = window.movies.reduce((acc, movie) => {
+        const catName = movie.category_name || "Action";
+        if (!acc[catName]) acc[catName] = { name: catName, movies: [] };
+        acc[catName].movies.push(movie);
+        return acc;
+      }, {});
 
-      C.start = function () {
-        V.renderNavBar("C.handlerAbout()", "C.handlerHome()");
-        V.renderMovie(movies);
-      };
 
-      // Vue (contient tout ce qui est relatif à l'affichage)
-      window.V = {};
+      const organizedData = Object.values(grouped);
 
-      /**
-       * V.renderNavBar
-       *
-       * Cette fonction est responsable de l'affichage de la barre de navigation (NavBar).
-       * Elle sélectionne l'élément HTML avec l'ID "header" et y insère le contenu
-       * formaté par le composant NavBar.
-       */
-      V.renderNavBar = function (hAbout, hHome) {
-        let header = document.querySelector("#header");
-        header.innerHTML = NavBar.format(hAbout, hHome);
-      };
 
-      V.renderMovie = function (data) {
-        let content = document.querySelector("#content");
-        content.innerHTML = Movie.format(data);
-      };
+      V.renderMovieByCategory(organizedData);
+    };
 
-      V.renderMovieDetail = function (movie) {
-        let content = document.querySelector("#content");
-        content.innerHTML = MovieDetail.format(movie);
-      };
+    C.start = function () {
+      V.renderNavBar("C.handlerAbout()", "C.handlerHome()");
+      V.renderMovie(movies);
+    };
 
-      V.renderMovieCategory = function (data) {
-        let content = document.querySelector("#content");
-        content.innerHTML = MovieCategory.format(data);
-      };
+    // Vue (contient tout ce qui est relatif à l'affichage)
+    window.V = {};
 
-      C.start(); // Démarre l'application
-    </script>
-  </body>
+    /**
+     * V.renderNavBar
+     *
+     * Cette fonction est responsable de l'affichage de la barre de navigation (NavBar).
+     * Elle sélectionne l'élément HTML avec l'ID "header" et y insère le contenu
+     * formaté par le composant NavBar.
+     */
+    V.renderNavBar = function (hAbout, hHome) {
+      let header = document.querySelector("#header");
+      header.innerHTML = NavBar.format(hAbout, hHome);
+    };
+
+    V.renderMovie = function (data) {
+      let content = document.querySelector("#content");
+      content.innerHTML = Movie.format(data);
+    };
+
+    V.renderMovieDetail = function (movie) {
+      let content = document.querySelector("#content");
+      content.innerHTML = MovieDetail.format(movie);
+    };
+
+    V.renderMovieByCategory = function (data) {
+      let content = document.querySelector("#content");
+      content.innerHTML = MovieCategory.format(data);
+    };
+
+    C.start(); // Démarre l'application
+  </script>
+</body>
+
 </html>
 <script type="module"></script>

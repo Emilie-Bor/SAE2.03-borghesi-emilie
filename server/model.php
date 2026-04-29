@@ -85,7 +85,8 @@ function getAllCategories(){
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     // Requête SQL pour récupérer le menu avec des paramètres
-    $sql = "SELECT id, name, FROM Category";
+    $sql = "SELECT id, name 
+            FROM Category";
     // Prépare la requête SQL
     $stmt = $cnx->prepare($sql);
     // Exécute la requête SQL
