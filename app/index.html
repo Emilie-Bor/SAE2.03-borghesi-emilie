@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <title>SAE2.03 APP</title>
@@ -19,7 +19,6 @@
       import { MovieCategory } from "./component/MovieCategory/script.js";
 
       import { DataMovie } from "./data/dataMovie.js";
-      
 
       let movies = await DataMovie.requestMovies();
       let erreur = []; // tableau vide pour tester le message d'erreur
@@ -31,7 +30,7 @@
 
       C.handlerAbout = function () {
         alert(
-          "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !"
+          "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !",
         );
       };
 
@@ -48,8 +47,19 @@
         V.renderMovie(movies, "C.handlerMovieDetail");
       };
 
+      C.MoviesByCategory = function (movies) {
+        const categories = movies.reduce((acc, movie) => {
+          const cat = movie.category_name || "Autres";
+          if (!acc[cat]) acc[cat] = { name: cat, movies: [] };
+          acc[cat].movies.push(movie);
+          return acc;
+        }, {});
+
+        return Object.values(categories);
+      };
       C.handlerMovieCategory = function () {
-        V.renderMovie(movies, "C.handlerMovieCategory");
+        const categories = C.MoviesByCategory(window.movies);
+        V.renderMovieCategory(movie);
       };
 
       C.start = function () {
@@ -80,6 +90,11 @@
       V.renderMovieDetail = function (movie) {
         let content = document.querySelector("#content");
         content.innerHTML = MovieDetail.format(movie);
+      };
+
+      V.renderMovieCategory = function (data) {
+        let content = document.querySelector("#content");
+        content.innerHTML = MovieCategory.format(data);
       };
 
       C.start(); // Démarre l'application

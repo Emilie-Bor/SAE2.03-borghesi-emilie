@@ -4,6 +4,8 @@ let template = await templateFile.text();
 let templateLiFile = await fetch("./component/MovieCategory/templateLi.html");
 let templateLi = await templateLiFile.text();
 
+import { Movie } from "../Movie/script.js";
+
 let MovieCategory = {};
 
 MovieCategory.format = function (data, tab) {
@@ -11,11 +13,15 @@ MovieCategory.format = function (data, tab) {
   //  html = html.replaceAll("{{cssClass}}", css);
 
   let menuHTML = "";
-  for (let i = 0; i < data.length; i++) {
-    let movie = data[i];
+  for (let category of data) {
+
     let li = templateLi;
-    li = li.replaceAll("{{categoryName}}", movie.name);
-    li = li.replaceAll("{{movies}}", movie.image);
+
+    li = li.replaceAll("{{categoryName}}", category.name);
+
+    let moviesHTML = Movie.format(category.movies); 
+    li = li.replaceAll("{{movies}}", moviesHTML);
+
     menuHTML += li;
 
     html = html.replaceAll("{{movieCategories}}", menuHTML);
