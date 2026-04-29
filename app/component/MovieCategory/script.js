@@ -13,13 +13,14 @@ MovieCategory.format = function (data, tab) {
   //  html = html.replaceAll("{{cssClass}}", css);
 
   let menuHTML = "";
+
   for (let category of data) {
 
     let li = templateLi;
 
     li = li.replaceAll("{{categoryName}}", category.name);
 
-    let moviesHTML = Movie.format(category.movies); 
+    let moviesHTML = Movie.format(category.name); 
     li = li.replaceAll("{{movies}}", moviesHTML);
 
     menuHTML += li;

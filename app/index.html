@@ -57,9 +57,10 @@
 
         return Object.values(categories);
       };
+
       C.handlerMovieCategory = function () {
-        const categories = C.MoviesByCategory(window.movies);
-        V.renderMovieCategory(movie);
+        const allCategories = C.MoviesByCategory(window.movies);
+        V.renderMovieCategory(allCategories);
       };
 
       C.start = function () {
