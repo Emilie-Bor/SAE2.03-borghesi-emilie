@@ -12,16 +12,15 @@ Movie.format = function (data, tab) {
 //  html = html.replaceAll("{{cssClass}}", css);
 
   if (data.length == 0){
-    return html.replaceAll("{{itemMovie}}", "<li class='movie__unavailable'>Nous n'avons aucun film de disponible aujourd'hui, repassez demain.</li>");
+    return html.replaceAll("{{itemMovie}}", "<li class='movie__unavailable'>Aucun film n'est disponible aujourd'hui.</li>");
   }
   else{
     let menuHTML = "";
-    for (let i = 0; i < data.length; i++) {
-        let movie = data[i];
+    for (let movie of data) {
         let li = templateLi;
         li = li.replaceAll("{{nameMovie}}", movie.name);
         li = li.replaceAll("{{imgMovie}}", "../server/images/" + movie.image);
-        li = li.replaceAll("{{id}}", i);
+        li = li.replaceAll("{{id}}", movie.id);
         menuHTML += li;
     }
     html = html.replaceAll("{{itemMovie}}", menuHTML);

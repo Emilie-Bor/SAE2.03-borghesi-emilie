@@ -21,10 +21,9 @@
 
     import { DataMovie } from "./data/dataMovie.js";
 
-    let movies = await DataMovie.requestMovies();
+
     let erreur = []; // tableau vide pour tester le message d'erreur
 
-    window.movies = await DataMovie.requestMovies();
     // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
     // Une fois l'application terminée, on pourrait remettre let C.
     window.C = {};
@@ -35,36 +34,30 @@
       );
     };
 
-    C.handlerHome = function () {
-      V.renderMovie(window.movies);
-    };
+    C.handlerHome = async function () {
+      await C.handlerMovieCategory();
+    }
 
-    C.handlerMovieDetail = function (index) {
-      let movie = window.movies[index];
+    C.handlerMovieDetail = async function (index) {
+      let movie = await DataMovie.requestMovieDetail(index);
       V.renderMovieDetail(movie);
     };
 
     C.handlerCloseMovieDetail = function (id) {
-      V.renderMovieCategory(movies, "C.handlerMovieCategory");
+      C.handlerMovieCategory();
     };
 
-    C.handlerMovieCategory = function () {
-
-      const grouped = window.movies.reduce((acc, movie) => {
-        const catName = movie.category_name || "Action";
-        if (!acc[catName]) acc[catName] = { name: catName, movies: [] };
-        acc[catName].movies.push(movie);
-        return acc;
-      }, {});
-
-      const organizedData = Object.values(grouped);
-
-      V.renderMovieByCategory(organizedData);
+    C.handlerMovieCategory = async function () {
+      let categories = await DataMovie.requestCategories();
+      for (let category of categories) {
+        category.movies = await DataMovie.requestMoviesFromCategory(category.id);
+      }
+      V.renderMoviesByCategory(categories);
     };
 
     C.start = function () {
       V.renderNavBar("C.handlerAbout()", "C.handlerHome()");
-      C.handlerMovieCategory();
+      C.handlerHome();
     };
 
     // Vue (contient tout ce qui est relatif à l'affichage)
@@ -89,10 +82,12 @@
 
     V.renderMovieDetail = function (movie) {
       let content = document.querySelector("#content");
-      content.innerHTML = MovieDetail.format(movie);
+      if (movie.length > 0) {
+        content.innerHTML = MovieDetail.format(movie[0]);
+      }
     };
 
-    V.renderMovieByCategory = function (data) {
+    V.renderMoviesByCategory = function (data) {
       let content = document.querySelector("#content");
       content.innerHTML = MovieCategory.format(data);
     };

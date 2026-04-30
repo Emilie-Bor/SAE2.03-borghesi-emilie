@@ -59,7 +59,38 @@ if(isset($_REQUEST['id'])){
     return false;
 }
 
-function readMovieCategoryController(){
+function readCategoriesController(){
   $categories = getAllCategories();
   return $categories;
+}
+
+function readMoviesFromCategory(){
+  if(isset($_REQUEST['category_id'])){
+        $id = $_REQUEST['category_id'];
+        return getMoviesFromCategory($id);
+    }
+}
+
+function addProfileController(){
+  /* Lecture des données de formulaire
+    On ne vérifie pas si les données sont valides, on suppose (faudra pas toujours...) que le client les a déjà
+    vérifiées avant de les envoyer 
+  */
+  $name = $_REQUEST['name'];
+  $avatar = $_REQUEST['avatar'];
+  $age = $_REQUEST['age'];
+  // Mise à jour du menu à l'aide de la fonction updateMenu décrite dans model.php
+  $ok = addProfile($name, $avatar, $age);
+  // $ok est le nombre de ligne affecté par l'opération de mise à jour dans la BDD (voir model.php)
+  if ($ok!=0){
+    return "Le nouveau profil a été ajouté avec succès !";
+  }
+  else{
+    return false;
+  }
+}
+
+function readProfilesController(){
+  $profiles = getAllProfiles();
+  return $profiles;
 }

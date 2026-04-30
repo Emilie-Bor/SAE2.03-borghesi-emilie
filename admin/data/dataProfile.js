@@ -1,9 +1,9 @@
 // URL où se trouve le répertoire "server" sur mmi.unilim.fr
 let HOST_URL = "..";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
 
-let DataMovie = {};
+let DataProfile = {};
 
-DataMovie.update = async function (fdata) {
+DataProfile.update = async function (fdata) {
     // fetch possède un deuxième paramètre (optionnel) qui est un objet de configuration de la requête HTTP:
     //  - method : la méthode HTTP à utiliser (GET, POST...)
     //  - body : les données à envoyer au serveur (sous forme d'objet FormData ou bien d'une chaîne de caractères, par exempe JSON)
@@ -11,10 +11,10 @@ DataMovie.update = async function (fdata) {
         method: "POST", // méthode HTTP à utiliser
         body: fdata // données à envoyer sous forme d'objet FormData
     };
-    let answer = await fetch(HOST_URL + "/server/script.php?todo=newmovie", config);
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=addprofile", config);
 
     let data = await answer.json();
     return data;
 }
 
-export { DataMovie };
+export { DataProfile };

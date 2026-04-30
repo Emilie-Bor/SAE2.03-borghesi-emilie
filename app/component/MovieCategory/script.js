@@ -15,11 +15,8 @@ MovieCategory.format = function (data) {
   let menuHTML = "";
 
   for (let category of data) {
-
     let li = templateLi;
-
     li = li.replaceAll("{{categoryName}}", category.name);
-
     let moviesHTML = Movie.format(category.movies); 
     li = li.replaceAll("{{movies}}", moviesHTML);
 
