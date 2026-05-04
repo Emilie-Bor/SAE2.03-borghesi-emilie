@@ -21,7 +21,7 @@
 
     import { DataMovie } from "./data/dataMovie.js";
 
-
+    let id = "";
     let erreur = []; // tableau vide pour tester le message d'erreur
 
     // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
@@ -44,7 +44,7 @@
     };
 
     C.handlerCloseMovieDetail = function (id) {
-      C.handlerMovieCategory();
+      C.handlerHome();
     };
 
     C.handlerMovieCategory = async function () {
