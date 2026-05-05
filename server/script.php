@@ -83,6 +83,10 @@ if ( isset($_REQUEST['todo']) ){
       $data = addProfileController();
       break;
 
+    case 'editprofile':
+      $data = editProfileController();
+      break;
+
     case 'readprofiles':
       $data = readProfilesController();
       break;

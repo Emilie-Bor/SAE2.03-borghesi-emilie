@@ -165,6 +165,26 @@ function addProfile ($name, $avatar, $age){
     return $res; // Retourne le nombre de lignes affectées
 }
 
+function editProfile ($id, $name, $avatar, $age){
+    // Connexion à la base de données
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
+    // Requête SQL de mise à jour du menu avec des paramètres
+    $sql = "REPLACE INTO Profile (id, name, avatar, age) 
+            VALUES (:id, :name, :avatar, :age)";
+    // Prépare la requête SQL
+    $stmt = $cnx->prepare($sql);
+    // Lie les paramètres aux valeurs
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':avatar', $avatar);
+    $stmt->bindParam(':age', $age);
+    // Exécute la requête SQL
+    $stmt->execute();
+    // Récupère le nombre de lignes affectées par la requête
+    $res = $stmt->rowCount(); 
+    return $res; // Retourne le nombre de lignes affectées
+}
+
 function getAllProfiles(){
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);

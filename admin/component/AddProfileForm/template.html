@@ -1,19 +1,18 @@
-<div class="add-profile">
+<section class="add-profile">
     <h2 class="add-profile__title">✧˖°.☆ﾟ°˖ Ajouter un profil ˖°ﾟ☆.°˖✧</h2>
     <form class="add-profile__form">
         <input class="add-profile__input" type="text" name="name" placeholder="Nom du profil" required>
         <input class="add-profile__input" type="text" name="avatar" placeholder="Nom du fichier de l'avatar" required>
         <select name="age" required>
+            <option value="">~ Sélectionnez une limitation d'âge ~</option>
             <option value="0">Tout public</option>
-            <option value="1">Avertissement</option>
             <option value="10">Déconseillé aux moins de 10 ans</option>
             <option value="12">Interdit au moins de 12 ans</option>
             <option value="16">Interdit au moins de 16 ans</option>
-            <option value="18">Interdit au moins de 18 ans (non classé X)</option>
-            <option value="19">Interdit au moins de 18 ans (classé X)</option>
+            <option value="18">Interdit au moins de 18 ans</option>
         </select>
         
         <input class="add-profile__btn" onclick="{{handler}}" type="button" value="Ajouter" name="todo">
 
     </form>
-</div>
+</section>

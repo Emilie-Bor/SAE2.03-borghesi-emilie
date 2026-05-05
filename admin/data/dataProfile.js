@@ -16,4 +16,19 @@ DataProfile.update = async function (fdata) {
     return data;
 }
 
+DataProfile.requestProfiles = async function() {
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=readprofiles");
+    let data = await answer.json();
+    return data;
+};
+
+DataProfile.editProfile = async function(fdata) {
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=editprofile", {
+        method: "POST", 
+        body: fdata 
+    });
+    let data = await answer.json();
+    return data;
+};
+ 
 export { DataProfile };

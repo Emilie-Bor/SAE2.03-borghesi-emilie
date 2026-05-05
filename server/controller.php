@@ -91,6 +91,25 @@ function addProfileController(){
   }
 }
 
+function editProfileController(){
+  if(isset($_REQUEST['id'])){
+        $id = $_REQUEST['id'];
+        $name = $_REQUEST['name'];
+        $avatar = $_REQUEST['avatar'];
+        $age = $_REQUEST['age'];
+
+        $ok = editProfile($id, $name, $avatar, $age);
+
+        if ($ok != 0) {
+          return "Le profil a été modifié avec succès !";
+        }
+        else {
+          return false;
+        }
+    }
+    return false;
+}
+
 function readProfilesController(){
   $profiles = getAllProfiles();
   return $profiles;
