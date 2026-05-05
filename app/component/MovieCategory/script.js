@@ -1,10 +1,10 @@
+import { Movie } from "../Movie/script.js";
+
 let templateFile = await fetch("./component/MovieCategory/template.html");
 let template = await templateFile.text();
 
 let templateLiFile = await fetch("./component/MovieCategory/templateLi.html");
 let templateLi = await templateLiFile.text();
-
-import { Movie } from "../Movie/script.js";
 
 let MovieCategory = {};
 
@@ -17,7 +17,14 @@ MovieCategory.format = function (data) {
   for (let category of data) {
     let li = templateLi;
     li = li.replaceAll("{{categoryName}}", category.name);
-    let moviesHTML = Movie.format(category.movies); 
+
+    let moviesHTML = "";
+    if (category.movies.length === 0) {
+      moviesHTML =
+        "<p class='movie-category__unavailable'>Aucun film disponible pour votre tranche d'âge.</p>";
+    } else {
+      moviesHTML = Movie.format(category.movies);
+    }
     li = li.replaceAll("{{movies}}", moviesHTML);
 
     menuHTML += li;

@@ -1,89 +1,92 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <title>SAE2.03 ADMIN</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/base.css" />
-  </head>
-  <body>
-    <section id="log"></section>
 
-    <section id="newMovie"></section>
+<head>
+  <title>SAE2.03 ADMIN</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/base.css" />
+</head>
 
-    <section id="addProfile"></section>
+<body>
+  <section id="log"></section>
 
-    <script type="module">
-      import { Log } from "./component/Log/script.js";
-      import { NewMovieForm } from "./component/NewMovieForm/script.js";
-      import { DataMovie } from "./data/dataMovie.js";
-      import { ProfileForm } from "./component/ProfileForm/script.js";
-      import { DataProfile } from "./data/dataProfile.js";
+  <section id="newMovie"></section>
 
-      let movies = await DataMovie.requestMovies;
+  <section id="addProfile"></section>
 
-      window.C = {};
+  <script type="module">
+    import { Log } from "./component/Log/script.js";
+    import { NewMovieForm } from "./component/NewMovieForm/script.js";
+    import { DataMovie } from "./data/dataMovie.js";
+    import { ProfileForm } from "./component/ProfileForm/script.js";
+    import { DataProfile } from "./data/dataProfile.js";
 
-      C.handlerMovieUpdate = async function(){
+    let movies = await DataMovie.requestCategories();
 
-            let form = document.querySelector('.new-movie__form');
+    window.C = {};
 
-            if (!form.reportValidity()) {
-                V.renderLog("Erreur : Veuillez remplir correctement tous les champs.");
-                form.reportValidity();
-                return;
-            }
+    C.handlerMovieUpdate = async function () {
 
-            let fd = new FormData(form);
-            V.renderLog("Ajout du film en cours...");
-            // Attend la réponse de la fonction `DataMenu.update(fd)`
-            let res = await DataMovie.update(fd);
-            V.renderLog(res);
+      let form = document.querySelector('.new-movie__form');
 
+      if (!form.reportValidity()) {
+        V.renderLog("Erreur : Veuillez remplir correctement tous les champs.");
+        form.reportValidity();
+        return;
       }
 
-      C.handlerProfileUpdate = async function(){
+      let fd = new FormData(form);
+      V.renderLog("Ajout du film en cours...");
+      // Attend la réponse de la fonction `DataMovie.update(fd)`
+      let res = await DataMovie.update(fd);
+      V.renderLog(res);
 
-            let form = document.querySelector('.add-profile__form');
+    }
 
-            if (!form.reportValidity()) {
-                V.renderLog("Erreur : Veuillez remplir correctement tous les champs.");
-                form.reportValidity();
-                return;
-            }
+    C.handlerProfileUpdate = async function () {
 
-            let fd = new FormData(form);
-            V.renderLog("Ajout du profil en cours...");
-            // Attend la réponse de la fonction `DataMenu.update(fd)`
-            let res = await DataProfile.update(fd);
-            V.renderLog(res);
-            
+      let form = document.querySelector('.add-profile__form');
+
+      if (!form.reportValidity()) {
+        V.renderLog("Erreur : Veuillez remplir correctement tous les champs.");
+        form.reportValidity();
+        return;
       }
 
-      C.start = function () {
-        V.renderLog("Démarrage de l'application");
-        V.renderMovie("C.handlerMovieUpdate()");
-        V.renderProfile("C.handlerProfileUpdate()");
-      };
+      let fd = new FormData(form);
+      V.renderLog("Ajout du profil en cours...");
+      // Attend la réponse de la fonction `DataMProfile.update(fd)`
+      let res = await DataProfile.update(fd);
+      V.renderLog(res);
 
-      window.V = {};
+    }
 
-      V.renderLog = function (txt) {
-        let content = document.querySelector("#log");
-        content.innerHTML = Log.format(txt);
-      };
+    C.start = function () {
+      V.renderLog("Démarrage de l'application");
+      V.renderNewMovieForm(movies, "C.handlerMovieUpdate()");
+      V.renderProfileForm("C.handlerProfileUpdate()");
+    };
 
-      V.renderMovie = function(handler){
-            let content = document.querySelector('#newMovie');
-            content.innerHTML = NewMovieForm.format(handler);
-      }
+    window.V = {};
 
-      V.renderProfile = function(handler){
-            let content = document.querySelector('#addProfile');
-            content.innerHTML = ProfileForm.format(handler);
-      }
+    V.renderLog = function (txt) {
+      let content = document.querySelector("#log");
+      content.innerHTML = Log.format(txt);
+    };
 
-      C.start();
-    </script>
-  </body>
+    V.renderNewMovieForm = function (data, handler) {
+      let content = document.querySelector('#newMovie');
+      content.innerHTML = NewMovieForm.format(data, handler);
+    }
+
+    V.renderProfileForm = function (handler) {
+      let content = document.querySelector('#addProfile');
+      content.innerHTML = ProfileForm.format(handler);
+    }
+
+    C.start();
+  </script>
+</body>
+
 </html>

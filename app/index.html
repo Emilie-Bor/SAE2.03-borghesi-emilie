@@ -23,7 +23,7 @@
     import { DataMovie } from "./data/dataMovie.js";
     import { DataProfile } from "./data/dataProfile.js";
 
-    let currentProfileId = null;
+    let currentProfile = null;
 
     let erreur = []; // tableau vide pour tester le message d'erreur
 
@@ -33,7 +33,7 @@
 
     C.handlerAbout = function () {
       alert(
-        "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !",
+        "Ceci est mon projet pour la SAE2.03 édition 2026. J'espère qu'il vous plaira !",
       );
     };
 
@@ -51,19 +51,21 @@
     };
 
     C.handlerMovieCategory = async function () {
+      let age = currentProfile ? currentProfile.age : 0;
       let categories = await DataMovie.requestCategories();
       for (let category of categories) {
-        category.movies = await DataMovie.requestMoviesFromCategory(category.id);
+        category.movies = await DataMovie.requestMoviesFromCategory(category.id, age);
       }
       V.renderMoviesByCategory(categories);
     };
 
     C.handlerProfiles = async function (id) {
-      currentProfileId = id;
-      C.handlerDropdown();
       let profiles = await DataProfile.requestProfiles();
+      currentProfile = profiles.find(p => p.id == id);
       profiles = profiles.sort((a, b) => a.id == id ? -1 : 1);
+      C.handlerDropdown();
       V.renderNavBar("C.handlerAbout()", "C.handlerHome()", profiles);
+      C.handlerHome();
     }
 
     C.handlerDropdown = function () {
@@ -79,7 +81,7 @@
     C.start = async function () {
       let profiles = await DataProfile.requestProfiles();
       if (profiles.length > 0) {
-        currentProfileId = profiles[0].id;
+        currentProfile = profiles[0];
       }
       V.renderNavBar("C.handlerAbout()", "C.handlerHome()", profiles);
       C.handlerHome();

@@ -3,6 +3,12 @@ let HOST_URL = "..";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR
 
 let DataMovie = {};
 
+DataMovie.requestCategories = async function () {
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=readcategories");
+    let data = await answer.json();
+    return data;
+}
+
 DataMovie.update = async function (fdata) {
     // fetch possède un deuxième paramètre (optionnel) qui est un objet de configuration de la requête HTTP:
     //  - method : la méthode HTTP à utiliser (GET, POST...)

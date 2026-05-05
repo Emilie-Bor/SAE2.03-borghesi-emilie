@@ -67,7 +67,8 @@ function readCategoriesController(){
 function readMoviesFromCategory(){
   if(isset($_REQUEST['category_id'])){
         $id = $_REQUEST['category_id'];
-        return getMoviesFromCategory($id);
+        $age = isset($_REQUEST['age']) ? $_REQUEST['age'] : 0;
+        return getMoviesFromCategory($id, $age);
     }
 }
 

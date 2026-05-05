@@ -13,8 +13,10 @@
 
   .movie-category__all {
     width: 100vw;
+
     .movie-category__cat {
       width: 100vw;
+
       .movie-category__title {
         font-size: 2rem;
         font-weight: 700;
@@ -25,6 +27,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+
         .movie-category__movies {
           display: flex;
           flex-direction: row;
@@ -34,13 +37,19 @@
           padding-right: 1.5rem; 
           scroll-snap-type: x mandatory;
           scroll-behavior: smooth;
+
+          .movie-category__unavailable {
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0 0 .7rem;
+          }
         }
       }
     }
   }
 }
 
-@media (min-width: 24rem) {
+@media (min-width: 48rem) {
   .movie-category {
     --_bg-clr: var(--color-fg);
     --_ff-clr: var(--color-black);
@@ -60,6 +69,7 @@
           display: flex;
           flex-direction: row;
           flex-wrap: wrap;
+
           .movie-category__movies {
           }
         }

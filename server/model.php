@@ -127,16 +127,18 @@ function getAllCategories(){
     return $res; // Retourne les résultats
 }
 
-function getMoviesFromCategory($category_id){
+function getMoviesFromCategory($category_id, $age = 0){
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     // Requête SQL pour récupérer le menu avec des paramètres
     $sql = "SELECT id, name, image 
             FROM Movie
-            WHERE id_category=:category_id";
+            WHERE id_category=:category_id
+            AND min_age <= :age";
     // Prépare la requête SQL
     $stmt = $cnx->prepare($sql);
     $stmt->bindParam(':category_id', $category_id);
+    $stmt->bindParam(':age', $age);
     // Exécute la requête SQL
     $stmt->execute();
     // Récupère les résultats de la requête sous forme d'objets

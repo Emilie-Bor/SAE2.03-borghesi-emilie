@@ -16,10 +16,10 @@ NavBar.format = function (hAbout, hHome, profiles) {
   if (currentProfile != "") {
     currentProfileHTML = `<img class="profile-dropdown__avatar" src="../server/images/${currentProfile.avatar}" onerror="this.src='../server/images/default-avatar.jpg'" alt="${currentProfile.name}" />
         <span>${currentProfile.name}</span>`;
-  } 
+  }
   else {
     currentProfileHTML = `<span>Choisissez un profil</span>`;
-  }
+  };
   html = html.replaceAll("{{currentProfile}}", currentProfileHTML);
 
   let menuHTML = "";
@@ -29,9 +29,9 @@ NavBar.format = function (hAbout, hHome, profiles) {
     li = li.replaceAll("{{profileName}}", profile.name);
     li = li.replaceAll("{{profileAvatar}}", profile.avatar ? "../server/images/" + profile.avatar : "../server/images/default-avatar.jpg");
     menuHTML += li;
-  }
+  };
   
-  html = html.replaceAll("{{currentProfile}}", currentProfile)
+  html = html.replaceAll("{{currentProfile}}", currentProfile);
   html = html.replaceAll("{{profileItem}}", menuHTML);
 
   return html;
