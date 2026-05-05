@@ -25,7 +25,7 @@ body {
 }
 
 /* Reset liste */
-ul {
+ul, li, ol {
   /* ➩ Supprime les marges internes et externes */
   padding: 0;
   margin: 0;

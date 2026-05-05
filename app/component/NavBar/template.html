@@ -3,9 +3,15 @@
     <li class="navbar__item" onclick="{{hAbout}}">About</li>
     <li class="navbar__item" onclick="{{hHome}}">Films</li>
     <li class="navbar__profile-select">
-      <select name="profile" required>
-        {{profileItem}}
-      </select>
+      <div class="navbar__profile-dropdown" onclick="C.handlerDropdown()">
+        <div class="profile-dropdown__selected">
+          {{currentProfile}}
+          <span class="profile-dropdown__arrow">▼</span>
+        </div>
+        <ol class="profile-dropdown__list" id="profile-dropdown-list" style="display:none;">
+          {{profileItem}}
+        </ol>
+      </div>
     </li>
   </ul>
 </nav>

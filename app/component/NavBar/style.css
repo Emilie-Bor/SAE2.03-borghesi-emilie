@@ -1,21 +1,98 @@
 .navbar {
+  --_fg-clr: var(--color-fg);
+  --_bg-clr: var(--color-bg);
+
+  --_list-clr: var(--color-black);
+  --_arrow-clr: var(--color-gray-light);
+
+  --_offset: 0.2rem;
+  --_border-clr: var(--color-gray);
+  --_hover-clr: var(--color-white);
+
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: baseline;
   align-items: center;
   padding: 1rem 3rem;
-  color: var(--color-fg);
-  background-color: var(--color-bg);
+  color: var(--_fg-clr);
+  background-color: var(--_bg-clr);
 
-  .navbar__item {
-    --_offset: 0.2rem;
-    padding: 0.5rem 1rem;
-    text-decoration: underline;
-    text-decoration-thickness: 0.1rem;
-    text-underline-offset: var(--_offset);
-    cursor: pointer;
-    transition: text-underline-offset 0.2s ease-in-out;
-    &:hover {
-      --_offset: 0.5rem;
+  .navbar__list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+
+    .navbar__item {
+      padding: 0.5rem 1rem;
+      text-decoration: underline;
+      text-decoration-thickness: 0.1rem;
+      text-underline-offset: var(--_offset);
+      cursor: pointer;
+      transition: text-underline-offset 0.2s ease-in-out;
+      &:hover {
+        --_offset: 0.5rem;
+      }
+    }
+
+    .navbar__profile-select {
+      margin-left: auto;
+
+      .navbar__profile-dropdown {
+        position: relative;
+        cursor: pointer;
+
+        .profile-dropdown__selected {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.4rem 0.8rem;
+          border: 1px solid var(--_border-clr);
+          border-radius: 0.5rem;
+          transition: border-color 0.2s ease;
+          &:hover {
+            border-color: var(--_hover-clr);
+          }
+        }
+
+        .profile-dropdown__avatar {
+          width: 2rem;
+          height: 2rem;
+          border-radius: 2rem;
+          object-fit: cover;
+        }
+
+        .profile-dropdown__arrow {
+          font-size: 0.7rem;
+          color: var(--_arrow-clr);
+        }
+
+        .profile-dropdown__list {
+          position: absolute;
+          right: 0;
+          top: calc(100% + 0.5rem);
+          z-index: 10;
+          list-style: none;
+          min-width: 10rem;
+          background-color: var(--_list-clr);
+          border: 1px solid var(--_border-clr);
+          border-radius: 0.5rem;
+          overflow: hidden;
+
+          .profile-dropdown__item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+            &:hover {
+              background-color: var(--_bg-clr);
+            }
+          }
+        }
+      }
     }
   }
 }

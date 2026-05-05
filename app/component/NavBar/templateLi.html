@@ -1,1 +1,4 @@
-<option value="{{profileId}}">{{profileName}}</option>
+<li class="profile-dropdown__item" onclick="event.stopPropagation(); C.handlerProfiles({{profileId}})">
+  <img class="profile-dropdown__avatar" src="{{profileAvatar}}" alt="{{profileName}}" />
+  <span>{{profileName}}</span>
+</li>
