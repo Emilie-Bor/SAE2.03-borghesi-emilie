@@ -1,7 +1,7 @@
 .log {
   display: flex;
   align-items: flex-end;
-  width: 30rem;
+  width: 100vw;
   height: 8rem;
   padding: 1rem 1rem 1rem 1.5rem;
 
@@ -9,6 +9,7 @@
   border-style: solid;
   border-color: var(--color-fg);
   border-width: 1px;
+  border-radius: .5rem;
   overflow: hidden;
   .log__list {
     font-size: smaller;

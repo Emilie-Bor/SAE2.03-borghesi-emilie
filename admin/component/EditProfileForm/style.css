@@ -1,0 +1,92 @@
+.edit-profile {
+  --_bg-clr: var(--color-baby-blue);
+  --_fg-clr: var(--color-very-dark-gray);
+
+  --_ff-sans: var(--ff-sans);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 95vw;
+  padding: .7rem;
+  margin-top: .7rem;
+  background-color: var(--_bg-clr);
+  border-radius: .5rem;
+
+  .edit-profile__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: var(--_ff-sans);
+    color: var(--_fg-clr);
+  }
+
+  .edit-profile__select {
+    .edit-profile__select-text {
+      font-size: .8rem;
+      font-weight: 500;
+      font-family: var(--_ff-sans);
+      color: var(--_fg-clr);
+    }
+  }
+
+  .edit-profile__form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: .3rem;
+    gap: .3rem;
+
+    .edit-profile__input {
+      font-size: .8rem;
+      padding: .1rem;
+      border-radius: .3rem;
+      cursor: pointer;
+    }
+
+    .edit-profile__btn {
+      text-align: center;
+      font-size: .7rem;
+      font-weight: 300;
+      font-family: var(--_ff-sans);
+      padding: .2rem;
+      border-radius: .5rem;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (min-width: 48rem) {
+  .edit-profile {
+    padding: .7rem 1rem;
+    margin-top: 1rem;
+
+    .edit-profile__title {
+      font-size: 2rem;
+    }
+
+    .edit-profile__select {
+      .edit-profile__select-text {
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: var(--_ff-sans);
+        color: var(--_fg-clr);
+      }
+    }
+
+    .edit-profile__form {
+      gap: .5rem;
+
+      .edit-profile__input {
+        font-size: .9rem;
+      }
+
+      .edit-profile__btn {
+        font-size: .9rem;
+        padding: .3rem;
+      }
+    }
+  }
+}

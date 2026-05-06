@@ -1,7 +1,7 @@
 <section class="edit-profile">
     <h3 class="edit-profile__title">✧˖°.☆ﾟ°˖ Modifier un profil ˖°ﾟ☆.°˖✧</h3>
     <div class="edit-profile__select">
-        <label for="profile-select">Choisir un profil à modifier :</label>
+        <label for="profile-select" class="edit-profile__select-text">Choisir un profil à modifier :</label>
         <select id="profile-select" onchange="C.handlerProfileSelect(this.value)">
             <option value="">~ Sélectionnez un profil ~</option>
             {{profileOptions}}

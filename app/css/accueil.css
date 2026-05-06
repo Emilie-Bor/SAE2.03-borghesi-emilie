@@ -1,35 +1,101 @@
 .hero {
+  --_bg-clr: var(--color-baby-blue);
+  --_fg-clr: var(--color-very-dark-gray);
+
+  --_btn-bg-clr: var(--color-sage-green);
+  --_btn-hover-clr: var(--color-weird-green);
+  --_text-hover-clr: var(--color-white);
+
+  --_ff-sans-accueil: var(--ff-sans-accueil);
+  --_ff-sans-btn: var(--ff-sans);
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 100vh;
-  padding: 1rem;
+  padding: 4rem 1rem 1rem;
   margin: 0;
-  background-color: grey;
+  font-family: var(--_ff-sans-accueil);
+  color: var(--_fg-clr);
+  background-color: var(--_bg-clr);
 
   .hero__title {
-    font-size: 1.7rem;
-    font-weight: 300;
+    font-size: 2rem;
+    font-weight: 700;
     text-align: center;
-    margin-bottom: 2rem;
+    margin: 2rem 1rem;
   }
 
   .hero__description {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    margin: 0 0.5rem 2rem;
   }
 
   .hero__list {
-    .hero__item-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 2rem;
+
+    .hero__btn {
       display: block;
       text-align: center;
       font-size: 1rem;
       font-weight: 700;
-      padding: 1rem 1.5rem;
-      color: black;
-      background-color: green;
+      padding: 1rem;
+      background-color: var(--_btn-bg-clr);
       border-radius: 0.5rem;
       transition: all 0.3s ease;
-      .hero__btn  {
+
+      .hero__btn-text {
+        font-size: 1.2rem;
+        font-weight: 500;
+        font-family: var(--_ff-sans-btn);
+        text-align: center;
+        color: var(--_fg-clr);
+      }
+    }
+
+    .hero__btn:hover {
+      transition: transform 0.2s ease-in-out;
+      color: var(--_bg-clr);
+      background-color: var(--_btn-hover-clr);
+
+      .hero__btn-text {
+        color: var(--_text-hover-clr);
+      }
+    }
+  }
+}
+
+@media (min-width: 48rem) {
+  .hero {
+    width: 100%;
+    align-items: center;
+
+    .hero__title {
+      font-size: 4rem;
+      font-weight: 700;
+    }
+
+    .hero__description {
+      font-size: 1.7rem;
+    }
+
+    .hero__list {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 4rem;
+      padding: 1rem;
+      margin-top: 2rem;
+
+      .hero__btn {
+        padding: 1rem 1.5rem;
+        .hero__btn-text {
+        }
       }
     }
   }
