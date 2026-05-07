@@ -1,3 +1,10 @@
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
 .navbar {
   --_fg-clr: var(--color-fg);
   --_bg-clr: var(--color-bg);
@@ -13,9 +20,7 @@
   --_hover-clr: var(--color-white);
 
   display: flex;
-  position: sticky;
   flex-direction: row;
-  justify-content: baseline;
   align-items: center;
   height: 3rem;
   padding: 1rem 3rem;

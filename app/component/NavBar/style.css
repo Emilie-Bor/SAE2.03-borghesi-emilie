@@ -1,3 +1,10 @@
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
 .navbar {
   --_fg-clr: var(--color-fg);
   --_bg-clr: var(--color-bg);
@@ -11,28 +18,33 @@
 
   display: flex;
   flex-direction: row;
-  justify-content: baseline;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   align-items: center;
-  padding: 1rem 3rem;
+  padding: .8rem 3rem;
   color: var(--_fg-clr);
   background-color: var(--_bg-clr);
 
   .navbar__list {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
     list-style: none;
 
     .navbar__item {
-      padding: 0.5rem 1rem;
+      padding: .5rem 1rem;
+      font-size: .8rem;
       text-decoration: underline;
-      text-decoration-thickness: 0.1rem;
+      text-decoration-thickness: .1rem;
       text-underline-offset: var(--_offset);
       cursor: pointer;
-      transition: text-underline-offset 0.2s ease-in-out;
+      transition: text-underline-offset .2s ease-in-out;
+
       &:hover {
-        --_offset: 0.5rem;
+        --_offset: .5rem;
       }
     }
 
@@ -46,11 +58,11 @@
         .profile-dropdown__selected {
           display: flex;
           align-items: center;
-          gap: 0.5rem;
-          padding: 0.4rem 0.8rem;
+          gap: .5rem;
+          padding: .4rem .8rem;
           border: 1px solid var(--_border-clr);
-          border-radius: 0.5rem;
-          transition: border-color 0.2s ease;
+          border-radius: .5rem;
+          transition: border-color .2s ease;
           &:hover {
             border-color: var(--_hover-clr);
           }
@@ -64,29 +76,30 @@
         }
 
         .profile-dropdown__arrow {
-          font-size: 0.7rem;
+          font-size: .7rem;
           color: var(--_arrow-clr);
         }
 
         .profile-dropdown__list {
           position: absolute;
           right: 0;
-          top: calc(100% + 0.5rem);
+          top: calc(100% + .5rem);
           z-index: 10;
           list-style: none;
           min-width: 10rem;
           background-color: var(--_list-clr);
           border: 1px solid var(--_border-clr);
-          border-radius: 0.5rem;
+          border-radius: .5rem;
           overflow: hidden;
 
           .profile-dropdown__item {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 0.6rem 1rem;
+            gap: .75rem;
+            padding: .6rem 1rem;
             cursor: pointer;
-            transition: background-color 0.15s ease;
+            transition: background-color .2s ease-in-out;
+
             &:hover {
               background-color: var(--_bg-clr);
             }
@@ -96,3 +109,17 @@
     }
   }
 }
+
+@media (min-width: 53rem) {
+  .navbar {
+    .navbar__list {
+      gap: 2rem;
+      list-style: none;
+
+      .navbar__item {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+

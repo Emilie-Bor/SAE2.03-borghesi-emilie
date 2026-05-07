@@ -18,7 +18,7 @@
       width: 100vw;
 
       .movie-category__title {
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: 700;
         color: var(--_ff-clr);
       }
@@ -49,7 +49,7 @@
   }
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 53rem) {
   .movie-category {
     --_bg-clr: var(--color-fg);
     --_ff-clr: var(--color-black);
@@ -75,5 +75,21 @@
         }
       }
     }
+  }
+}
+
+.profile-select__message {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-align: center;
+  font-family: var(--ff-sans);
+  color: var(--ff-clr);
+  margin-top: 2rem;
+}
+
+@media (min-width: 53rem) {
+  .profile-select__message {
+    font-size: 3rem;
+    margin-top: 5rem;
   }
 }

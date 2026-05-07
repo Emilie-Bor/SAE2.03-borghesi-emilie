@@ -25,21 +25,17 @@
         {{ageMovie}}
       </p>
     </div>
+    <button class="movie-detail__favorite" onclick="{{favoriteHandler}}">
+      {{favoriteLabel}}
+    </button>
   </div>
-  <iframe
-    class="movie-detail__trailer"
-    src="{{trailerMovie}}"
-    title="URL link"
-    frameborder="0"
-    allow=
-      "accelerometer;
+  <iframe class="movie-detail__trailer" src="{{trailerMovie}}" title="URL link" frameborder="0" allow="accelerometer;
       utoplay;
       clipboard-write;
       encrypted-media;
       gyroscope;
       picture-in-picture;
-      web-share;"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen>
-    Bande Annonce</iframe>
+      web-share;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+      Bande Annonce
+  </iframe>
 </section>

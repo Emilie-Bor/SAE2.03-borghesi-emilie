@@ -58,7 +58,7 @@
   }
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 53rem) {
   .movie {
     .movie__unavailable {
       font-size: 2rem;

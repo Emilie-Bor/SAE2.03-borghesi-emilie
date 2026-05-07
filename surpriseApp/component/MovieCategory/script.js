@@ -8,11 +8,22 @@ let templateLi = await templateLiFile.text();
 
 let MovieCategory = {};
 
-MovieCategory.format = function (data) {
+MovieCategory.format = function (data, favorites) {
   let html = template;
   //  html = html.replaceAll("{{cssClass}}", css);
-
   let menuHTML = "";
+
+  let Li = templateLi;
+    Li = Li.replaceAll("{{categoryName}}", "💛 Mes favoris");
+    let favmoviesHTML = "";
+    if (!favorites || favorites.length === 0) {
+        favmoviesHTML = "<p class='movie-category__unavailable'>Aucun film en favori pour l'instant.</p>";
+    } 
+    else {
+        favmoviesHTML = Movie.format(favorites);
+    }
+    Li = Li.replaceAll("{{movies}}", favmoviesHTML);
+    menuHTML += Li;
 
   for (let category of data) {
     let li = templateLi;
