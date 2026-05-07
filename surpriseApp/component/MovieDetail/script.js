@@ -3,7 +3,7 @@ let template = await templateFile.text();
 
 let MovieDetail = {};
 
-MovieDetail.format = function (data, favorites) {
+MovieDetail.format = function (data) {
   let html = template;
 
   html = html.replaceAll("{{imgMovie}}", "../server/images/" + data.image);
@@ -14,17 +14,6 @@ MovieDetail.format = function (data, favorites) {
   html = html.replaceAll("{{categoryMovie}}", data.category_name);
   html = html.replaceAll("{{ageMovie}}", data.min_age);
   html = html.replaceAll("{{trailerMovie}}", data.trailer);
-  html = html.replaceAll("{{idMovie}}", data.id);
-
-  let isFavorite = favorites.some((fav) => fav.id_movie == data.id);
-  if (isFavorite) {
-    html = html.replaceAll("{{favoriteClass}}", "movie-detail__favorite--active");
-    html = html.replaceAll("{{favoriteLabel}}", "❤️ Dans vos favoris");
-  }
-  else {
-    html = html.replaceAll("{{favoriteClass}}", "");
-    html = html.replaceAll("{{favoriteLabel}}", "♡ Ajouter aux favoris");
-  };
 
   return html;
 };

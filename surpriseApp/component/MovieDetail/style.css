@@ -73,12 +73,6 @@
           margin-bottom: 0.25rem;
         }
       }
-
-      .movie-detail__favorite {
-        .movie-detail__favorite--active{
-          
-        }
-      }
     }
   }
 
@@ -106,7 +100,7 @@
       max-width: 60rem;
 
       .movie-detail__close:hover {
-        transition: transform 0.2s ease-in-out;
+        transition: transform .2s ease-in-out;
         transform: scale(1.5);
       }
 

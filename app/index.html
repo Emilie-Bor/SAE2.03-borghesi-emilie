@@ -22,6 +22,7 @@
 
     import { DataMovie } from "./data/dataMovie.js";
     import { DataProfile } from "./data/dataProfile.js";
+    import { DataFavorite } from "./data/dataFavorite.js";
 
     let currentProfile = null;
 
@@ -43,7 +44,11 @@
 
     C.handlerMovieDetail = async function (index) {
       let movie = await DataMovie.requestMovieDetail(index);
-      V.renderMovieDetail(movie);
+      let favorites = [];
+      if (currentProfile) {
+        favorites = await DataFavorite.requestFavorites(currentProfile.id);
+      }
+      V.renderMovieDetail(movie, favorites);
     };
 
     C.handlerCloseMovieDetail = function (id) {
@@ -56,7 +61,25 @@
       for (let category of categories) {
         category.movies = await DataMovie.requestMoviesFromCategory(category.id, age);
       }
-      V.renderMoviesByCategory(categories);
+      let favorites = [];
+      if (currentProfile) {
+        let favIds = await DataFavorite.requestFavorites(currentProfile.id);
+        for (let fav of favIds) {
+          let movie = await DataMovie.requestMovieDetail(fav.id_movie);
+          if (movie.length > 0) favorites.push(movie[0]);
+        }
+      }
+      V.renderMoviesByCategory(categories, favorites);
+    };
+
+    C.handlerAddFavorite = async function (movieId) {
+      if (!currentProfile) {
+        alert("Veuillez sélectionner un profil d'abord !");
+        return;
+      }
+      let res = await DataFavorite.addFavorite(currentProfile.id, movieId);
+      alert(res);
+      C.handlerMovieDetail(movieId);
     };
 
     C.handlerProfiles = async function (id) {
@@ -107,16 +130,16 @@
       content.innerHTML = Movie.format(data);
     };
 
-    V.renderMovieDetail = function (movie) {
+    V.renderMovieDetail = function (movie, favorites) {
       let content = document.querySelector("#content");
       if (movie.length > 0) {
-        content.innerHTML = MovieDetail.format(movie[0]);
+        content.innerHTML = MovieDetail.format(movie[0], favorites);
       }
     };
 
-    V.renderMoviesByCategory = function (data) {
+    V.renderMoviesByCategory = function (data, favorites) {
       let content = document.querySelector("#content");
-      content.innerHTML = MovieCategory.format(data);
+      content.innerHTML = MovieCategory.format(data, favorites);
     };
 
     C.start(); // Démarre l'application
