@@ -22,7 +22,6 @@
 
     import { DataMovie } from "./data/dataMovie.js";
     import { DataProfile } from "./data/dataProfile.js";
-    import { DataFavorite } from "./data/dataFavorite.js";
 
     let currentProfile = null;
 
@@ -44,11 +43,7 @@
 
     C.handlerMovieDetail = async function (index) {
       let movie = await DataMovie.requestMovieDetail(index);
-      let favorites = [];
-      if (currentProfile) {
-        favorites = await DataFavorite.requestFavorites(currentProfile.id);
-      }
-      V.renderMovieDetail(movie, favorites);
+      V.renderMovieDetail(movie);
     };
 
     C.handlerCloseMovieDetail = function (id) {
@@ -61,46 +56,17 @@
       for (let category of categories) {
         category.movies = await DataMovie.requestMoviesFromCategory(category.id, age);
       }
-      let favorites = [];
-      if (currentProfile) {
-        let favIds = await DataFavorite.requestFavorites(currentProfile.id);
-        for (let fav of favIds) {
-          let movie = await DataMovie.requestMovieDetail(fav.id_movie);
-          if (movie.length > 0) favorites.push(movie[0]);
-        }
-      }
-      V.renderMoviesByCategory(categories, favorites);
-    };
-
-    C.handlerAddFavorite = async function (movieId) {
-      if (!currentProfile) return;
-      let res = await DataFavorite.addFavorite(currentProfile.id, movieId);
-      alert(res);
-      C.handlerMovieDetail(movieId);
-    };
-
-    C.handlerRemoveFavorite = async function (movieId) {
-      if (!currentProfile) {
-        alert("Veuillez sélectionner un profil d'abord !");
-        return;
-      }
-      let res = await DataFavorite.removeFavorite(currentProfile.id, movieId);
-      alert(res);
-      C.handlerMovieDetail(movieId);
+      V.renderMoviesByCategory(categories);
     };
 
     C.handlerProfiles = async function (id) {
       let profiles = await DataProfile.requestProfiles();
       currentProfile = profiles.find(p => p.id == id);
       profiles = profiles.sort((a, b) => a.id == id ? -1 : 1);
-      V.renderNavBar("C.handlerAbout()", "C.handlerHome()", profiles, currentProfile);
+      C.handlerDropdown();
+      V.renderNavBar("C.handlerAbout()", "C.handlerHome()", profiles);
       C.handlerHome();
     }
-
-    C.handlerLogout = function () {
-      currentProfile = null;
-      C.start();
-    };
 
     C.handlerDropdown = function () {
       let list = document.querySelector("#profile-dropdown-list");
@@ -114,8 +80,11 @@
 
     C.start = async function () {
       let profiles = await DataProfile.requestProfiles();
+      if (profiles.length > 0) {
+        currentProfile = profiles[0];
+      }
       V.renderNavBar("C.handlerAbout()", "C.handlerHome()", profiles);
-      document.querySelector("#content").innerHTML = '<p class="profile-select__message">Sélectionnez un profil pour commencer !</p>';
+      C.handlerHome();
     };
 
     // Vue (contient tout ce qui est relatif à l'affichage)
@@ -128,9 +97,9 @@
      * Elle sélectionne l'élément HTML avec l'ID "header" et y insère le contenu
      * formaté par le composant NavBar.
      */
-    V.renderNavBar = function (hAbout, hHome, profiles, activeProfile) {
+    V.renderNavBar = function (hAbout, hHome, profiles) {
       let header = document.querySelector("#header");
-      header.innerHTML = NavBar.format(hAbout, hHome, profiles, activeProfile);
+      header.innerHTML = NavBar.format(hAbout, hHome, profiles);
     };
 
     V.renderMovie = function (data) {
@@ -138,16 +107,16 @@
       content.innerHTML = Movie.format(data);
     };
 
-    V.renderMovieDetail = function (movie, favorites) {
+    V.renderMovieDetail = function (movie) {
       let content = document.querySelector("#content");
       if (movie.length > 0) {
-        content.innerHTML = MovieDetail.format(movie[0], favorites);
+        content.innerHTML = MovieDetail.format(movie[0]);
       }
     };
 
-    V.renderMoviesByCategory = function (data, favorites) {
+    V.renderMoviesByCategory = function (data) {
       let content = document.querySelector("#content");
-      content.innerHTML = MovieCategory.format(data, favorites);
+      content.innerHTML = MovieCategory.format(data);
     };
 
     C.start(); // Démarre l'application
@@ -155,3 +124,4 @@
 </body>
 
 </html>
+<script type="module"></script>

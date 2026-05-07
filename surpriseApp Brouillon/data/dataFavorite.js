@@ -3,7 +3,7 @@ let HOST_URL = "..";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR
 
 let DataFavorite = {};
 
-DataFavorite.requestFavorites = async function(profileId){
+DataFavorite.requestFavorites = async function(){
     // fetch permet d'envoyer une requête HTTP à l'URL spécifiée. 
     // L'URL est construite en concaténant HOST_URL à "/server/script.php?direction=" et la valeur de la variable dir. 
     // L'URL finale dépend de la valeur de HOST_URL et de dir.
@@ -28,16 +28,4 @@ DataFavorite.addFavorite = async function(profileId, movieId) {
     return data;
 };
 
-DataFavorite.removeFavorite = async function(profileId, movieId) {
-    let fdata = new FormData();
-    fdata.append("profile_id", profileId);
-    fdata.append("movie_id", movieId);
-    let answer = await fetch(HOST_URL + "/server/script.php?todo=removefavorite", {
-        method: "POST",
-        body: fdata
-    });
-    let data = await answer.json();
-    return data;
-};
-
-export { DataFavorite };
+export {DataFavorite};

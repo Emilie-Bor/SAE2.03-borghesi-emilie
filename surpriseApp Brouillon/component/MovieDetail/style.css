@@ -1,16 +1,7 @@
 .movie-detail {
-  --_fg-clr: var(--color-fg);
-  --_bg-clr: var(--color-bg);
+  --_fg-clr: var(--color-gray-dark);
+  --_bg-clr: var(--color-gray);
   --_card-bg-clr: var(--color-gray-light);
-
-  --_ff-sans: var(--ff-sans);
-
-  --_list-clr: var(--color-bg);
-  --_line-clr: var(--color-fg-sec);
-
-  --_border-clr: var(--color-white);
-  --_hover-clr: var(--color-white);
-
 
   display: flex;
   position: relative;
@@ -50,15 +41,13 @@
     .movie-detail__title {
       width: 100%;
       text-align: center;
-      font-size: 1.5rem;
+      font-size: 2.25rem;
       font-weight: 700;
-      margin-top: 2rem;
-      padding: 0 .5rem;
     }
 
     .movie-detail__img {
       width: 100%;
-      max-width: 15rem;
+      max-width: 20rem;
       height: auto;
       object-fit: cover;
       border-radius: 0.5rem;
@@ -80,28 +69,24 @@
 
         .movie-detail__info-title {
           font-weight: 700;
-          font-size: 1.1rem;
+          font-size: 1.15rem;
           margin-bottom: 0.25rem;
         }
       }
     }
-    .movie-detail__favorite {
-      position: absolute;
-      top: 1rem;
-      right: 2rem;
-      font-size: 1rem;
-      font-weight: 500;
-      padding: .2rem .3rem;
-      color: var(--_fg-clr);
-      background-color: var(--_card-bg-clr);
-      border: 1px solid var(--_bg-clr);
-      border-radius: .5rem;
-      cursor: pointer;
-    }
+  }
+
+  .movie-detail__trailer {
+    width: 100%;
+    max-width: 50rem;
+    aspect-ratio: 16/9;
+    margin-top: 2rem;
+    border-radius: 0.4rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
   }
 }
 
-@media (min-width: 53rem) {
+@media (min-width: 48rem) {
   .movie-detail {
     padding: 3rem;
 
@@ -115,7 +100,7 @@
       max-width: 60rem;
 
       .movie-detail__close:hover {
-        transition: transform 0.2s ease-in-out;
+        transition: transform .2s ease-in-out;
         transform: scale(1.5);
       }
 
@@ -143,14 +128,9 @@
         }
       }
     }
-  }
-}
 
-.movie-detail__trailer {
-  width: 100%;
-  max-width: 50rem;
-  aspect-ratio: 16/9;
-  margin-top: 2rem;
-  border-radius: 0.4rem;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+    .movie-detail__trailer {
+      margin-top: 3rem;
+    }
+  }
 }
