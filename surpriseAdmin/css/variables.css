@@ -1,25 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
   /* Primitive Tokens */
   --color-black: hsl(253, 69%, 8%);
   --color-white: hsl(0, 0%, 100%);
-  --color-gray-light: hsl(0, 0%, 80%);
-  --color-gray: hsl(0, 0%, 50%);
-  --color-gray-dark: hsl(0, 0%, 20%);
+  --color-gray: hsl(210, 7%, 88%);
+  --color-light-blue: hsl(197, 17%, 63%);
+  --color-blue: hsl(203, 58%, 15%);
+  --color-dark-blue: hsl(180, 40%, 10%);
+  --color-yellow-green: hsl(65, 79%, 62%);
 
-  --color-baby-blue: hsl(193, 20%, 77%);
-  --color-sage-green: hsl(127, 32%, 84%);
-  --color-weird-green: hsl(92, 11%, 69%);
-  --color-dark-green: hsl(100, 9%, 39%);
-  --color-very-dark-gray: hsl(80, 2%, 26%);
-
-
-  --ff-sans: "DM sans", sans-serif;
-  --ff-sans-accueil: "Playfair", serif;
+  --ff-sans: "Inter", Arial, sans-serif;
 
   /* Sementic Tokens */
   --color-fg: var(--color-white);
-  --color-bg: var(--color-gray-dark);
+  --color-fg-sec: var(--color-yellow-green);
+  --color-bg: var(--color-blue);
+
+  --color-accent: var(--color-light-blue);
 }

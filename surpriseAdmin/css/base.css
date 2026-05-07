@@ -4,9 +4,7 @@
 @import "./variables.css" layer(variables);
 @import "./utilities.css" layer(utilities);
 
-@import "../component/NavBar/style.css" layer(components);
-@import "../component/Movie/style.css" layer(components);
-@import "../component/MovieDetail/style.css" layer(components);
-@import "../component/MovieCategory/style.css" layer(components);
-
-@import "./accueil.css" layer(components);
+@import "../component/Log/style.css" layer(components);
+@import "../component/NewMovieForm/style.css" layer(components);
+@import "../component/AddProfileForm/style.css" layer(components);
+@import "../component/EditProfileForm/style.css" layer(components);

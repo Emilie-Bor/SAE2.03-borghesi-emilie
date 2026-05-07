@@ -1,0 +1,23 @@
+<section class="edit-profile">
+    <h3 class="edit-profile__title">✧˖°.☆ﾟ°˖ Modifier un profil ˖°ﾟ☆.°˖✧</h3>
+    <div class="edit-profile__select">
+        <label for="profile-select" class="edit-profile__select-text">Choisir un profil à modifier :</label>
+        <select id="profile-select" onchange="C.handlerProfileSelect(this.value)">
+            <option value="">~ Sélectionnez un profil ~</option>
+            {{profileOptions}}
+        </select>
+    </div>
+    <form class="edit-profile__form" id="edit-profile-form" style="display:none;">
+        <input type="hidden" name="id" id="edit-profile-id" />
+        <input class="edit-profile__input" type="text" name="name" id="edit-profile-name" placeholder="Nom du profil" required />
+        <input class="edit-profile__input" type="text" name="avatar" id="edit-profile-avatar" placeholder="Nom du fichier de l'avatar" />
+        <select name="age" id="edit-profile-age" required>
+            <option value="0">Tout public</option>
+            <option value="10">Déconseillé aux moins de 10 ans</option>
+            <option value="12">Interdit au moins de 12 ans</option>
+            <option value="16">Interdit au moins de 16 ans</option>
+            <option value="18">Interdit au moins de 18 ans</option>
+        </select>
+        <input class="edit-profile__btn" onclick="{{handler}}" type="button" value="Modifier" name="todo"/>
+    </form>
+</section>
