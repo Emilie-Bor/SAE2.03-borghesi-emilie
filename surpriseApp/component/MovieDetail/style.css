@@ -1,7 +1,6 @@
 .movie-detail {
   --_fg-clr: var(--color-fg);
   --_bg-clr: var(--color-bg);
-  --_card-bg-clr: var(--color-gray-light);
 
   --_ff-sans: var(--ff-sans);
 
@@ -29,16 +28,16 @@
     max-width: 55rem;
     padding-top: 1rem;
     gap: 1rem;
-    background: var(--_card-bg-clr);
-    border-radius: 1rem;
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--_line-clr);
+    border-radius: .5rem;
+    box-shadow: inset 0 .5rem 1rem rgba(0, 0, 0, 0.361);
 
     .movie-detail__close {
       position: absolute;
       top: 1rem;
       left: 2rem;
       font-size: 1.5rem;
-      color: var(--_fg-clr);
+      color: var(--_line-clr);
       cursor: pointer;
     }
 
@@ -54,6 +53,7 @@
       font-weight: 700;
       margin-top: 2rem;
       padding: 0 .5rem;
+      color: var(--_fg-clr);
     }
 
     .movie-detail__img {
@@ -61,8 +61,8 @@
       max-width: 15rem;
       height: auto;
       object-fit: cover;
-      border-radius: 0.5rem;
-      box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+      border-radius: .5rem;
+      box-shadow: 0 .25rem .75rem rgba(0, 0, 0, 0.15);
       cursor: pointer;
     }
 
@@ -77,23 +77,25 @@
       .movie-detail__info {
         font-size: 1rem;
         line-height: 1.5;
+        color: var(--_fg-clr);
 
         .movie-detail__info-title {
-          font-weight: 700;
-          font-size: 1.1rem;
-          margin-bottom: 0.25rem;
+          font-weight: 600;
+          font-size: 1rem;
+          margin-bottom: .25rem;
+          color: var(--_line-clr);
         }
       }
     }
     .movie-detail__favorite {
       position: absolute;
       top: 1rem;
-      right: 2rem;
-      font-size: 1rem;
+      right: 1.6rem;
+      font-size: .8rem;
       font-weight: 500;
       padding: .2rem .3rem;
-      color: var(--_fg-clr);
-      background-color: var(--_card-bg-clr);
+      color: var(--_bg-clr);
+      background-color: var(--_fg-clr);
       border: 1px solid var(--_bg-clr);
       border-radius: .5rem;
       cursor: pointer;
@@ -143,6 +145,20 @@
         }
       }
     }
+
+    .movie-detail__favorite {
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: .2rem .3rem;
+      color: var(--_fg-clr);
+      background-color: var(--_card-bg-clr);
+      border: 1px solid var(--_bg-clr);
+      border-radius: .5rem;
+      cursor: pointer;
+    }
   }
 }
 
@@ -151,6 +167,7 @@
   max-width: 50rem;
   aspect-ratio: 16/9;
   margin-top: 2rem;
+  border: 1px solid var(--_line-clr);
   border-radius: 0.4rem;
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
 }
