@@ -28,4 +28,16 @@ DataFavorite.addFavorite = async function(profileId, movieId) {
     return data;
 };
 
+DataFavorite.removeFavorite = async function(profileId, movieId) {
+    let fdata = new FormData();
+    fdata.append("profile_id", profileId);
+    fdata.append("movie_id", movieId);
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=removefavorite", {
+        method: "POST",
+        body: fdata
+    });
+    let data = await answer.json();
+    return data;
+};
+
 export { DataFavorite };

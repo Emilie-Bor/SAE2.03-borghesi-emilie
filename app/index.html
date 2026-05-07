@@ -73,11 +73,18 @@
     };
 
     C.handlerAddFavorite = async function (movieId) {
+      if (!currentProfile) return;
+      let res = await DataFavorite.addFavorite(currentProfile.id, movieId);
+      alert(res);
+      C.handlerMovieDetail(movieId);
+    };
+
+    C.handlerRemoveFavorite = async function (movieId) {
       if (!currentProfile) {
         alert("Veuillez sélectionner un profil d'abord !");
         return;
       }
-      let res = await DataFavorite.addFavorite(currentProfile.id, movieId);
+      let res = await DataFavorite.removeFavorite(currentProfile.id, movieId);
       alert(res);
       C.handlerMovieDetail(movieId);
     };

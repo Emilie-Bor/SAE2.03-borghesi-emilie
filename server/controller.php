@@ -122,8 +122,24 @@ function addFavoriteController(){
         $ok = addFavorite($profile_id, $movie_id);
         if ($ok != 0){
             return "Le film a été ajouté à vos favoris !";
-        } else {
+        } 
+        else {
             return "Ce film est déjà dans vos favoris.";
+        }
+    }
+    return false;
+}
+
+function removeFavoriteController(){
+    if(isset($_REQUEST['profile_id']) && isset($_REQUEST['movie_id'])){
+        $profile_id = $_REQUEST['profile_id'];
+        $movie_id = $_REQUEST['movie_id'];
+        $ok = removeFavorite($profile_id, $movie_id);
+        if ($ok != 0){
+            return "Le film a été retiré de vos favoris !";
+        } 
+        else {
+            return false;
         }
     }
     return false;

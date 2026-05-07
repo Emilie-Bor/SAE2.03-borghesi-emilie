@@ -95,6 +95,10 @@ if ( isset($_REQUEST['todo']) ){
       $data = addFavoriteController();
       break;
 
+    case 'removefavorite':
+      $data = removeFavoriteController();
+      break;
+
     case 'readfavorites':
       $data = readFavoritesController();
       break;

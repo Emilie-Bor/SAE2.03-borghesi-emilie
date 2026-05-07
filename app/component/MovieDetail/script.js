@@ -18,13 +18,13 @@ MovieDetail.format = function (data, favorites) {
 
   let isFavorite = favorites.some((fav) => fav.id_movie == data.id);
   if (isFavorite) {
-    html = html.replaceAll("{{favoriteClass}}", "movie-detail__favorite--active");
-    html = html.replaceAll("{{favoriteLabel}}", "❤️ Dans vos favoris");
-  }
+    html = html.replaceAll("{{favoriteLabel}}", "❌ Retirer des favoris");
+    html = html.replaceAll("{{favoriteHandler}}", "C.handlerRemoveFavorite(" + data.id + ")");
+  } 
   else {
-    html = html.replaceAll("{{favoriteClass}}", "");
     html = html.replaceAll("{{favoriteLabel}}", "♡ Ajouter aux favoris");
-  };
+    html = html.replaceAll("{{favoriteHandler}}", "C.handlerAddFavorite(" + data.id + ")");
+  }
 
   return html;
 };

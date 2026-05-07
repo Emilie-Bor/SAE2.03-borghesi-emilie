@@ -204,17 +204,6 @@ function addFavorite($profile_id, $movie_id){
     return $stmt->rowCount();
 }
 
-function getFavoritesByProfile($profile_id){
-    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-    $sql = "SELECT id_movie 
-            FROM Favorite 
-            WHERE id_profile = :profile_id";
-    $stmt = $cnx->prepare($sql);
-    $stmt->bindParam(':profile_id', $profile_id);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_OBJ);
-}
-
 function removeFavorite($profile_id, $movie_id){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     $sql = "DELETE FROM Favorite 
@@ -225,4 +214,15 @@ function removeFavorite($profile_id, $movie_id){
     $stmt->bindParam(':movie_id', $movie_id);
     $stmt->execute();
     return $stmt->rowCount();
+}
+
+function getFavoritesByProfile($profile_id){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "SELECT id_movie 
+            FROM Favorite 
+            WHERE id_profile = :profile_id";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':profile_id', $profile_id);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
 }
